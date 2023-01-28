@@ -30,16 +30,16 @@ session_start();
 date_default_timezone_set('Europe/London');
 
 // Define a temp dir where tests may write to
-$tmpDir = dirname(__FILE__) . '/../../../target/temp/phpunit';
+$tmpDir = __DIR__ . '/../../../target/temp/phpunit';
 if (!is_dir($tmpDir)) {
 	mkdir($tmpDir, 0777, true);
 }
 define('PHPUNIT_TEMP_DIR', realpath($tmpDir));
 
 // Make the path to the configurations dir for easier access
-$confDir = dirname(__FILE__) . '/../resources/configs';
+$confDir = __DIR__ . '/../resources/configs';
 define('PHPUNIT_CONFIG_DIR', realpath($confDir));
 
-require dirname(__FILE__) . '/../../main/php/Logger.php';
-require dirname(__FILE__) . DIRECTORY_SEPARATOR . 'LoggerTestHelper.php';
+require __DIR__ . '/../../main/php/Logger.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'LoggerTestHelper.php';
 

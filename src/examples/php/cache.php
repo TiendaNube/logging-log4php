@@ -16,9 +16,9 @@
  * limitations under the License.
  */
 // START SNIPPET: doxia
-require_once dirname(__FILE__).'/../../main/php/Logger.php';
+require_once __DIR__.'/../../main/php/Logger.php';
 
-Logger::configure(dirname(__FILE__).'/../resources/cache.properties');
+Logger::configure(__DIR__.'/../resources/cache.properties');
 
 $cache = 'target/examples/hierarchy.cache';
 

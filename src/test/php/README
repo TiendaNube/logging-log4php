@@ -15,5 +15,5 @@ $ phpunit src/test/php/appenders/LoggerAppenderSocketTest.php
 
 Do not use relative file paths in the tests. Absoulte paths may be constructed
 using snippets like:
-* dirname(__FILE__) . '/../path/to/file' 
+* __DIR__ . '/../path/to/file'
 * PHPUNIT_TEMP_DIR . '/../path/to/file'

@@ -28,7 +28,7 @@
 class LoggerLocationInfo {
 	
 	/** The value to return when the location information is not available. */
-	const LOCATION_INFO_NA = 'NA';
+	final const LOCATION_INFO_NA = 'NA';
 	
 	/**
 	 * Caller line number.

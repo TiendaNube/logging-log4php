@@ -16,20 +16,20 @@
  * limitations under the License.
  */
 // START SNIPPET: doxia
-require_once dirname(__FILE__).'/../../main/php/Logger.php';
-Logger::configure(dirname(__FILE__).'/../resources/appender_socket_server.properties');
+require_once __DIR__.'/../../main/php/Logger.php';
+Logger::configure(__DIR__.'/../resources/appender_socket_server.properties');
 
 require_once 'Net/Server.php';
 require_once 'Net/Server/Handler.php';
 
 class Net_Server_Handler_Log extends Net_Server_Handler {
-  
+
         private $hierarchy;
 
         function onStart() {
                 $this->hierarchy = Logger::getRootLogger();
         }
-  
+
         function onReceiveData($clientId = 0, $data = "") {
                 $events = $this->getEvents($data);
                 foreach($events as $event) {
@@ -48,13 +48,13 @@ class Net_Server_Handler_Log extends Net_Server_Handler {
                         }
                 }
         }
-  
+
         function getEvents($data) {
-                if (preg_match('/^<log4php:event/', $data)) {
+                if (preg_match('/^<log4php:event/', (string) $data)) {
                     throw new Exception("Please use 'log4php.appender.default.useXml = false' in appender_socket.properties file!");
                 }
-                preg_match('/^(O:\d+)/', $data, $parts);
-                $events = explode($parts[1], $data);
+                preg_match('/^(O:\d+)/', (string) $data, $parts);
+                $events = explode($parts[1], (string) $data);
                 array_shift($events);
                 $size = count($events);
                 for($i=0; $i<$size; $i++) {

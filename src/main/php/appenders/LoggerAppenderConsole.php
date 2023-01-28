@@ -17,18 +17,18 @@
  */
 
 /**
- * LoggerAppenderConsole appends log events either to the standard output 
+ * LoggerAppenderConsole appends log events either to the standard output
  * stream (php://stdout) or the standard error stream (php://stderr).
- * 
- * **Note**: Use this Appender with command-line php scripts. On web scripts 
+ *
+ * **Note**: Use this Appender with command-line php scripts. On web scripts
  * this appender has no effects.
  *
  * This appender uses a layout.
  *
  * ## Configurable parameters: ##
- * 
+ *
  * - **target** - the target stream: "stdout" or "stderr"
- * 
+ *
  * @version $Revision$
  * @package log4php
  * @subpackage appenders
@@ -38,14 +38,14 @@
  class LoggerAppenderConsole extends LoggerAppender {
 
 	/** The standard otuput stream.  */
-	const STDOUT = 'php://stdout';
-	
+	final const STDOUT = 'php://stdout';
+
 	/** The standard error stream.*/
-	const STDERR = 'php://stderr';
+	final const STDERR = 'php://stderr';
 
 	/** The 'target' parameter. */
 	protected $target = self::STDOUT;
-	
+
 	/**
 	 * Stream resource for the target stream.
 	 * @var resource
@@ -55,16 +55,16 @@
 	public function activateOptions() {
 		$this->fp = fopen($this->target, 'w');
 		if(is_resource($this->fp) && $this->layout !== null) {
-			fwrite($this->fp, $this->layout->getHeader());
+			fwrite($this->fp, $this->layout->getHeader() ?? '');
 		}
 		$this->closed = (bool)is_resource($this->fp) === false;
 	}
-	
-	
+
+
 	public function close() {
 		if($this->closed != true) {
 			if (is_resource($this->fp) && $this->layout !== null) {
-				fwrite($this->fp, $this->layout->getFooter());
+				fwrite($this->fp, $this->layout->getFooter() ?? '');
 				fclose($this->fp);
 			}
 			$this->closed = true;
@@ -73,10 +73,10 @@
 
 	public function append(LoggerLoggingEvent $event) {
 		if (is_resource($this->fp) && $this->layout !== null) {
-			fwrite($this->fp, $this->layout->format($event));
+			fwrite($this->fp, $this->layout->format($event) ?? '');
 		}
 	}
-	
+
 	/**
 	 * Sets the 'target' parameter.
 	 * @param string $target
@@ -92,7 +92,7 @@
 			$this->warn("Invalid value given for 'target' property: [$target]. Property not set.");
 		}
 	}
-	
+
 	/**
 	 * Returns the value of the 'target' parameter.
 	 * @return string

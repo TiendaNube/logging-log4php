@@ -28,7 +28,7 @@
  */
 class LoggerAppenderRollingFileTest extends PHPUnit_Framework_TestCase {
 
-	const WARNING_MASSAGE = 'WARN - my messageXYZ';
+	final const WARNING_MASSAGE = 'WARN - my messageXYZ';
 	
 	protected function setUp() {
 		@unlink(PHPUNIT_TEMP_DIR . '/TEST-rolling.txt');

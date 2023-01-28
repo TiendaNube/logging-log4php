@@ -28,7 +28,7 @@ if(!class_exists('PEAR_PackageFileManager2')) {
 	exit(0);
 }
 
-include dirname(__FILE__).'/package-config.php';
+include __DIR__.'/package-config.php';
 
 $package = new PEAR_PackageFileManager2();
 $result = $package->setOptions($options);

@@ -74,30 +74,30 @@ class LoggerPatternConverterTest extends PHPUnit_Framework_TestCase {
 	public function testDate() {
 		$converter = new LoggerPatternConverterDate($this->info, 'c');
 		$actual = $converter->convert($this->event);
-		$expected = date('c', $this->event->getTimeStamp());
+		$expected = date('c', (int) $this->event->getTimeStamp());
 		self::assertSame($expected, $actual);
 
 		// Format defaults to 'c'
 		$converter = new LoggerPatternConverterDate($this->info);
 		$actual = $converter->convert($this->event);
-		$expected = date('c', $this->event->getTimeStamp());
+		$expected = date('c', (int) $this->event->getTimeStamp());
 		self::assertSame($expected, $actual);
-		
+
 		$converter = new LoggerPatternConverterDate($this->info, '');
 		$actual = $converter->convert($this->event);
-		$expected = date('c', $this->event->getTimeStamp());
+		$expected = date('c', (int) $this->event->getTimeStamp());
 		self::assertSame($expected, $actual);
 
 		// Test ABSOLUTE
 		$converter = new LoggerPatternConverterDate($this->info, 'ABSOLUTE');
 		$actual = $converter->convert($this->event);
-		$expected = date('H:i:s', $this->event->getTimeStamp());
+		$expected = date('H:i:s', (int) $this->event->getTimeStamp());
 		self::assertSame($expected, $actual);
 
 		// Test DATE
 		$converter = new LoggerPatternConverterDate($this->info, 'DATE');
 		$actual = $converter->convert($this->event);
-		$expected = date('d M Y H:i:s.', $this->event->getTimeStamp());
+		$expected = date('d M Y H:i:s.', (int) $this->event->getTimeStamp());
 
 		$timestamp = $this->event->getTimeStamp();
 		$ms = floor(($timestamp - floor($timestamp)) * 1000);
@@ -173,11 +173,11 @@ class LoggerPatternConverterTest extends PHPUnit_Framework_TestCase {
 
 		Logger::resetConfiguration();
 	}
-	
+
 	public function testLocation2() {
 		$config = LoggerTestHelper::getEchoPatternConfig("%location");
 		Logger::configure($config);
-	
+
 		// Test by capturing output. Logging methods of a Logger object must
 		// be used for the location info to be formed correctly.
 		ob_start();
@@ -185,14 +185,14 @@ class LoggerPatternConverterTest extends PHPUnit_Framework_TestCase {
 		$log->info('foo'); $line = __LINE__; // Do NOT move this to next line.
 		$actual = ob_get_contents();
 		ob_end_clean();
-	
+
 		$class = __CLASS__;
 		$func = __FUNCTION__;
 		$file = __FILE__;
-		
+
 		$expected = "$class.$func($file:$line)";
 		self::assertSame($expected, $actual);
-	
+
 		Logger::resetConfiguration();
 	}
 

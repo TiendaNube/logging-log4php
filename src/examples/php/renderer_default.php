@@ -16,14 +16,14 @@
  * limitations under the License.
  */
 // START SNIPPET: doxia
-require_once dirname(__FILE__).'/../../main/php/Logger.php';
-Logger::configure(dirname(__FILE__).'/../resources/renderer_default.properties');
+require_once __DIR__.'/../../main/php/Logger.php';
+Logger::configure(__DIR__.'/../resources/renderer_default.properties');
 
-class Person {
+class Person implements \Stringable {
     public $firstName = 'John';
     public $lastName = 'Doe';
 
-    public function __toString() {
+    public function __toString() : string {
         return $this->lastName . ', ' . $this->firstName;
     }
 }

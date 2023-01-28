@@ -59,19 +59,19 @@ abstract class LoggerFilter extends LoggerConfigurable {
 	 * The log event must be logged immediately without consulting with
 	 * the remaining filters, if any, in the chain.	 
 	 */
-	const ACCEPT = 1;
+	final const ACCEPT = 1;
 	
 	/**
 	 * This filter is neutral with respect to the log event. The
 	 * remaining filters, if any, should be consulted for a final decision.
 	 */
-	const NEUTRAL = 0;
+	final const NEUTRAL = 0;
 	
 	/**
 	 * The log event must be dropped immediately without consulting
 	 * with the remaining filters, if any, in the chain.
 	 */
-	const DENY = -1;
+	final const DENY = -1;
 
 	/**
 	 * @var LoggerFilter Points to the next {@link LoggerFilter} in the filter chain.

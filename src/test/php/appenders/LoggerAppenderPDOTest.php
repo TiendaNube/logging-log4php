@@ -28,7 +28,7 @@
  */
 class LoggerAppenderPDOTest extends PHPUnit_Framework_TestCase {
 
-	const FILENAME = 'pdotest.sqlite';
+	final const FILENAME = 'pdotest.sqlite';
 	private static $dsn;
 	private static $file;
 	

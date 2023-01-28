@@ -29,7 +29,7 @@
 class LoggerAppenderSocketTest extends PHPUnit_Framework_TestCase {
 
 	/** Port on which the socket server will run. */
-	const SOCKET_PORT = 12345;
+	final const SOCKET_PORT = 12345;
 
 	/** The socket server process resource. */
 	private $server;
@@ -101,7 +101,7 @@ class LoggerAppenderSocketTest extends PHPUnit_Framework_TestCase {
 			2 => array("file", $serverLog, "a") // stderr
 		);
 
-		$cmd = "php " . dirname(__FILE__) . '/socketServer.php';
+		$cmd = "php " . __DIR__ . '/socketServer.php';
 		$this->server = proc_open($cmd, $descriptorspec, $this->pipes);
 		if ($this->server === false) {
 			throw new Exception("Failed starting the socket server process.");

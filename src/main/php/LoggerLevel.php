@@ -33,14 +33,14 @@
  */
 class LoggerLevel {
 	
-	const OFF = 2147483647;
-	const FATAL = 50000;
-	const ERROR = 40000;
-	const WARN = 30000;
-	const INFO = 20000;
-	const DEBUG = 10000;
-	const TRACE = 5000;
-	const ALL = -2147483647;
+	final const OFF = 2147483647;
+	final const FATAL = 50000;
+	final const ERROR = 40000;
+	final const WARN = 30000;
+	final const INFO = 20000;
+	final const DEBUG = 10000;
+	final const TRACE = 5000;
+	final const ALL = -2147483647;
 
 	/** Integer level value. */
 	private $level;

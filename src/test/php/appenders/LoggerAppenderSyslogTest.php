@@ -178,7 +178,7 @@ class LoggerAppenderSyslogTest extends PHPUnit_Framework_TestCase {
 		// Only test facilities which exist on this OS
 		$facilities = array();
 		foreach($strings as $string) {
-			$const = "LOG_$string";
+			$final const = "LOG_$string";
 			if (defined($const)) {
 				$facilities[$string] = constant($const); 
 			}

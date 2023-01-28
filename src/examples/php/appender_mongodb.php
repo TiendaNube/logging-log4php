@@ -15,8 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require_once dirname(__FILE__).'/../../main/php/Logger.php';
-Logger::configure(dirname(__FILE__).'/../resources/appender_mongodb.xml');
+require_once __DIR__.'/../../main/php/Logger.php';
+Logger::configure(__DIR__.'/../resources/appender_mongodb.xml');
 
 $logger = Logger::getLogger('main');
 $logger->debug("Hello World!");

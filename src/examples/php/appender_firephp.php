@@ -35,7 +35,7 @@ define('INSIGHT_DEBUG', true);  //Comment, after config is debugged, to remove '
 define('INSIGHT_IPS', '*');		//Your IP here for extra security
 //Works, but replace next line with free key from Developer Companion, for security on live sites
 define('INSIGHT_AUTHKEYS', '*');
-define('INSIGHT_PATHS', dirname(__FILE__));
+define('INSIGHT_PATHS', __DIR__);
 
 //EDIT YOUR FirePHP LOCATION HERE
 // If using ZIP Archive
@@ -48,9 +48,9 @@ require_once 'FirePHP/Init.php';	//Must be declared before log4php
 
 
 
-require_once dirname(__FILE__).'/../../main/php/Logger.php';
+require_once __DIR__.'/../../main/php/Logger.php';
 
-Logger::configure(dirname(__FILE__).'/../resources/appender_firephp.xml');
+Logger::configure(__DIR__.'/../resources/appender_firephp.xml');
 
 ?>
 <!-- RUN THIS FROM WEB DOCUMENT_ROOT (~/public_html/ or /var/www/) -->

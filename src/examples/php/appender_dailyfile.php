@@ -16,8 +16,8 @@
  * limitations under the License.
  */
 // START SNIPPET: doxia
-require_once dirname(__FILE__).'/../../main/php/Logger.php';
-Logger::configure(dirname(__FILE__).'/../resources/appender_dailyfile.properties');
+require_once __DIR__.'/../../main/php/Logger.php';
+Logger::configure(__DIR__.'/../resources/appender_dailyfile.properties');
 
 $logger = Logger::getRootLogger();
 $logger->debug("Hello World!");

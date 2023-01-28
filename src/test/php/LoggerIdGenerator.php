@@ -37,6 +37,6 @@ class LoggerIdGenerator
 		return self::$instance;
 	}
 
-	final private function __clone() {/* do not clone me */
+	private function __clone() {/* do not clone me */
 	}
 }

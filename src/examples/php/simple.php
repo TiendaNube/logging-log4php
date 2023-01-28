@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 // START SNIPPET: doxia
-require_once dirname(__FILE__).'/../../main/php/Logger.php';
+require_once __DIR__.'/../../main/php/Logger.php';
 
 class Log4phpTest {
     private $_logger;
